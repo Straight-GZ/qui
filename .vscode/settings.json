@@ -2,6 +2,8 @@
     "cSpell.words": [
         "topnav"
     ],
-    "window.zoomLevel": 1,
-    "editor.fontSize": 15
+    "window.zoomLevel": 2,
+    "editor.fontSize": 15,
+    "oneDarkPro.bold": true,
+    "oneDarkPro.editorTheme": "vscode"
 }
