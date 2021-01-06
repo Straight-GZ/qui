@@ -1,21 +1,23 @@
 <template>
   <template v-if="visible">
-    <div class="lunzi-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="lunzi-dialog-wrapper">
-      <div class="lunzi-dialog">
-        <header>
-          <slot name="title" />
-          <span @click="close" class="lunzi-dialog-close"></span>
-        </header>
-        <main>
-          <slot name="content" />
-        </main>
-        <footer>
-          <Button @click="ok">OK</Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <teleport to="body">
+      <div class="lunzi-dialog-overlay" @click="onClickOverlay"></div>
+      <div class="lunzi-dialog-wrapper">
+        <div class="lunzi-dialog">
+          <header>
+            <slot name="title" />
+            <span @click="close" class="lunzi-dialog-close"></span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </teleport>
   </template>
 </template>
 <script lang="ts">
@@ -27,7 +29,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    onClickOverlay: {
+    closeOnClickOverlay: {
       type: Boolean,
       default: true,
     },
@@ -44,19 +46,18 @@ export default {
       context.emit("update:visible", false);
     };
     const onClickOverlay = () => {
-      if (props.onClickOverlay) {
+      if (props.closeOnClickOverlay) {
         close();
       }
     };
     const ok = () => {
-      console.log(props.ok);
       // if (props.ok && props.ok() !== false) {
       if (props.ok?.() !== false) {
-        console.log("1");
         close();
       }
     };
     const cancel = () => {
+      props.cancel?.();
       close();
     };
     return {
