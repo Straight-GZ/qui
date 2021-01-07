@@ -3,6 +3,7 @@
     <div class="lunzi-tabs-nav">
       <div
         class="lunzi-tabs-nav-item"
+        @click="select(t)"
         :class="{ selected: t === selected }"
         v-for="(t, index) in titles"
         :key="index"
@@ -11,18 +12,13 @@
       </div>
     </div>
     <div class="lunzi-tabs-content">
-      <component
-        class="lunzi-tabs-content-item"
-        v-for="(c, index) in defaults"
-        v-if="c.props.title === selected"
-        :is="c"
-        :key="index"
-        >{{ c.props }}</component
-      >
+      {{ current }}
+      <component class="lunzi-tabs-content-item" :is="current" />
     </div>
   </div>
 </template>
 <script lang="ts">
+import { computed } from "vue";
 import Tab from "./Tab.vue";
 export default {
   props: {
@@ -40,7 +36,15 @@ export default {
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
-    return { defaults, titles };
+    const current = computed(() => {
+      return defaults.filter((tag) => {
+        return tag.props.title === props.selected;
+      })[0];
+    });
+    const select = (title) => {
+      context.emit("update:selected", title);
+    };
+    return { defaults, titles, current, select };
   },
 };
 </script>
