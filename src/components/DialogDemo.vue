@@ -2,9 +2,9 @@
   <div>dialog 内容</div>
   <h1>示例1</h1>
   <Button @click="toggle">toggle</Button>
-  <Dialog v-model:visible="x" :closeOnClickOverlay="true" :ok="f1" :cancel="f2"
-    ><template v-slot:content
-      ><strong>hi</strong>
+  <Dialog v-model:visible="x" :closeOnClickOverlay="true" :ok="f1" :cancel="f2">
+    <template v-slot:content>
+      <strong>hi</strong>
       <div>你好</div>
     </template>
     <template v-slot:title>
@@ -40,7 +40,7 @@ export default {
       openDialog({
         title: "标题",
         content: "内容",
-        closeOnClickOverlay: true,
+        closeOnClickOverlay: false,
         ok() {
           console.log("ok");
         },
