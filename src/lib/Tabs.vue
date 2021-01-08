@@ -3,14 +3,14 @@
     <div class="lunzi-tabs-nav" ref="container">
       <div
         class="lunzi-tabs-nav-item"
+        v-for="(t, index) in titles"
         :ref="
           (el) => {
-            if (t === selected) selectdItem = el;
+            if (t === selected) selectedItem = el;
           }
         "
         @click="select(t)"
         :class="{ selected: t === selected }"
-        v-for="(t, index) in titles"
         :key="index"
       >
         {{ t }}
@@ -29,7 +29,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, onMounted, onUpdated, watchEffect, ref } from "vue";
+import { computed, ref, onMounted, onUpdated, watchEffect } from "vue";
 import Tab from "./Tab.vue";
 export default {
   props: {
@@ -38,20 +38,20 @@ export default {
     },
   },
   setup(props, context) {
-    const selectdItem = ref<HTMLDivElement>(null);
+    const selectedItem = ref<HTMLDivElement>(null);
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
-    const x = () => {};
-    onMounted(() => {
-      watchEffect(() => {
-        const { width } = selectdItem.value.getBoundingClientRect();
-        indicator.value.style.width = width + "px";
-        const { left: left1 } = container.value.getBoundingClientRect();
-        const { left: left2 } = selectdItem.value.getBoundingClientRect();
-        const left = left2 - left1;
-        indicator.value.style.left = left + "px";
-      });
-    });
+
+    const x = () => {
+      const { width } = selectedItem.value.getBoundingClientRect();
+      indicator.value.style.width = width + "px";
+      const { left: left1 } = container.value.getBoundingClientRect();
+      const { left: left2 } = selectedItem.value.getBoundingClientRect();
+      const left = left2 - left1;
+      indicator.value.style.left = left + "px";
+    };
+    onMounted(x);
+    onUpdated(x);
 
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
@@ -62,20 +62,15 @@ export default {
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
-    const current = computed(() => {
-      return defaults.filter((tag) => {
-        return tag.props.title === props.selected;
-      })[0];
-    });
+
     const select = (title) => {
       context.emit("update:selected", title);
     };
     return {
       defaults,
       titles,
-      current,
       select,
-      selectdItem,
+      selectedItem,
       indicator,
       container,
     };
