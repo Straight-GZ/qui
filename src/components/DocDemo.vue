@@ -1,4 +1,4 @@
-<template>
+<template class="backround">
   <div>Doc 默认页面</div>
 </template>
 <script lang="ts">

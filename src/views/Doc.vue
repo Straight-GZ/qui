@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Topnav class="nav" />
+    <Topnav menuIconVisible="true" class="nav" />
     <div class="content">
       <aside v-if="menuVisible">
         <h2>组件列表</h2>
@@ -29,6 +29,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .layout {
+  background: #262431;
   display: flex;
   flex-direction: column;
   height: 100vh;

@@ -35,11 +35,13 @@ $border-radius: 4px;
 $blue: #00c9db;
 $deepBlue: #3b2f9f;
 .backGround {
+  color: #f1f1f8;
   background: linear-gradient(
     145deg,
     rgba(31, 29, 42, 1) 0%,
     rgba(119, 123, 233, 1) 100%
   );
+  clip-path: ellipse(90% 60% at 50% 40%);
 }
 .lunzi-icons {
   > svg {
