@@ -18,18 +18,12 @@
       <div class="lunzi-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="lunzi-tabs-content">
-      <component
-        class="lunzi-tabs-content-item"
-        :class="{ selected: c.props.title === selected }"
-        v-for="(c, index) in defaults"
-        :is="c"
-        :key="index"
-      />
+      <component :is="current" :key="current.props.title" />
     </div>
   </div>
 </template>
 <script lang="ts">
-import { computed, ref, onMounted, onUpdated } from "vue";
+import { computed, ref, onMounted, onUpdated, watchEffect } from "vue";
 import Tab from "./Tab.vue";
 export default {
   props: {
@@ -42,17 +36,23 @@ export default {
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
 
-    const x = () => {
-      const { width } = selectedItem.value.getBoundingClientRect();
-      indicator.value.style.width = width + "px";
-      const { left: left1 } = container.value.getBoundingClientRect();
-      const { left: left2 } = selectedItem.value.getBoundingClientRect();
-      const left = left2 - left1;
-      indicator.value.style.left = left + "px";
-    };
-    onMounted(x);
-    onUpdated(x);
+    onMounted(() => {
+      watchEffect(
+        () => {
+          const { width } = selectedItem.value.getBoundingClientRect();
+          indicator.value.style.width = width + "px";
+          const { left: left1 } = container.value.getBoundingClientRect();
+          const { left: left2 } = selectedItem.value.getBoundingClientRect();
+          const left = left2 - left1;
+          indicator.value.style.left = left + "px";
+        },
+        { flush: "post" }
+      );
+    });
 
+    const current = computed(() => {
+      return defaults.find((tag) => tag.props.title === props.selected);
+    });
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
@@ -67,6 +67,7 @@ export default {
       context.emit("update:selected", title);
     };
     return {
+      current,
       defaults,
       titles,
       select,
