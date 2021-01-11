@@ -5,18 +5,14 @@
 </template>
 <script lang="ts">
 import Demo from "./Demo.vue";
-import Switch from "../lib/Switch.vue";
 import Switch1Demo from "./Switch1.demo.vue";
 import Switch2Demo from "./Switch2.demo.vue";
-import { ref } from "vue";
 export default {
   components: {
     Demo,
   },
   setup() {
-    const bool = ref(false);
     return {
-      bool,
       Switch1Demo,
       Switch2Demo,
     };
