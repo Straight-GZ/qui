@@ -22,7 +22,6 @@ export default {
   components: { Button },
   props: {
     component: Object,
-    title: String,
   },
   setup(props) {
     const codeVisible = ref(false);
