@@ -1,7 +1,7 @@
 <template>
   <h1>Switch 组件示例</h1>
-  <Demo :component="Switch1Demo" title="简单" />
-  <Demo :component="Switch2Demo" title="复杂" />
+  <Demo :component="Switch1Demo" />
+  <Demo :component="Switch2Demo" />
 </template>
 <script lang="ts">
 import Demo from "./Demo.vue";
