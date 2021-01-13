@@ -36,7 +36,7 @@ export default {
 <style lang="scss" scoped>
 $aside-index: 10;
 .layout {
-  background: #262431;
+  background: white;
   display: flex;
   flex-direction: column;
   height: 100vh;

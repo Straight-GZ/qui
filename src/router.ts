@@ -8,11 +8,14 @@ import TabsDemo from "./components/TabsDemo.vue";
 
 import { h } from "vue";
 import Markdown from "./components/Markdown.vue";
+import intro from "./markdown/intro.md";
+import getStarted from "./markdown/get-started.md";
+import install from "./markdown/install.md";
 
-const markdown = (filename) => {
+const md = (String) => {
   return {
-    path: `../markdown/${filename}.md`,
-    key: filename,
+    content: String,
+    key: String,
   };
 };
 const history = createWebHashHistory();
@@ -27,15 +30,15 @@ export const router = createRouter({
         { path: "", redirect: "/doc/intro" },
         {
           path: "intro",
-          component: h(Markdown, markdown("intro")),
+          component: h(Markdown, md(intro)),
         },
         {
           path: "install",
-          component: h(Markdown, markdown("install")),
+          component: h(Markdown, md(install)),
         },
         {
           path: "GetStarted",
-          component: h(Markdown, markdown("get-started")),
+          component: h(Markdown, md(getStarted)),
         },
         { path: "switch", component: SwitchDemo },
         { path: "button", component: ButtonDemo },
