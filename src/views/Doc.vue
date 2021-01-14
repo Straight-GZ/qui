@@ -44,9 +44,10 @@ $aside-index: 10;
     flex-shrink: 0;
   }
   > .content {
+    font-size: 20px;
     flex-grow: 1;
     padding-top: 60px;
-    padding-left: 156px;
+    padding-left: 226px;
     @media (max-width: 500px) {
       padding-left: 0;
     }
@@ -65,7 +66,7 @@ $aside-index: 10;
 }
 aside {
   background: lightblue;
-  width: 150px;
+  width: 220px;
   padding: 16px 0;
   position: fixed;
   top: 0;
@@ -86,11 +87,13 @@ aside {
       }
       > .router-link-active {
         background: fade-out($color: blue, $amount: 0.9);
+        border-right: 5px solid fade-out($color: #000000, $amount: 0.8);
       }
     }
   }
 }
 main {
+  font-size: 20px;
   overflow: auto;
 }
 </style>
