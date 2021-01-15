@@ -1,10 +1,10 @@
 <demo>常规使用</demo>
 <template>
   <div>
-    <Button>你好</Button>
-    <Button theme="button">你好</Button>
-    <Button theme="link">你好</Button>
-    <Button theme="text">你好</Button>
+    <Button>click!</Button>
+    <Button theme="button">click!</Button>
+    <Button theme="link">click!</Button>
+    <Button theme="text">click!</Button>
   </div>
 </template>
 <script lang="ts">
