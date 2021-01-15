@@ -1,9 +1,10 @@
 <template>
   <button class="lunzi-button" :class="classes" :disabled="disabled">
-    <span v-if="loading" class="lunzi-loadingIndicator"></span><slot />
+    <span v-if="loading" class="lunzi-loadingIndicator"></span>
+    <slot />
   </button>
 </template>
-<script>
+<script lang="ts">
 import { computed } from "vue";
 export default {
   props: {

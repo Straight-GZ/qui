@@ -20,7 +20,6 @@
 </template>
 <script lang="ts">
 import Button from "../lib/Button.vue";
-import Demo from "./Demo.vue";
 export default {
   components: { Button },
 };

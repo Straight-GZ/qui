@@ -1,6 +1,6 @@
 <template>
   <template v-if="visible">
-    <teleport to="body">
+    <Teleport to="body">
       <div class="lunzi-dialog-overlay" @click="onClickOverlay"></div>
       <div class="lunzi-dialog-wrapper">
         <div class="lunzi-dialog">
@@ -17,7 +17,7 @@
           </footer>
         </div>
       </div>
-    </teleport>
+    </Teleport>
   </template>
 </template>
 <script lang="ts">
@@ -51,7 +51,6 @@ export default {
       }
     };
     const ok = () => {
-      // if (props.ok && props.ok() !== false) {
       if (props.ok?.() !== false) {
         close();
       }
