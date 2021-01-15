@@ -5,8 +5,8 @@
   </div>
 </template>
 <script lang="ts">
-import Button from "../lib/Button.vue";
-import { openDialog } from "../lib/openDialog";
+import { openDialog } from "../lib/index";
+import { Button } from "../lib/index";
 export default {
   components: { Button },
   setup() {

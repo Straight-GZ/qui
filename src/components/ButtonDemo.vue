@@ -7,7 +7,7 @@
   <Demo :component="Button5Demo" />
 </template>
 <script>
-import Button from "../lib/Button.vue";
+import { Button } from "../lib/index";
 import Demo from "./Demo.vue";
 import Button1Demo from "./Button1Demo.vue";
 import Button2Demo from "./Button2Demo.vue";
