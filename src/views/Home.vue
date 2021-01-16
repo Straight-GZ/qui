@@ -6,7 +6,9 @@
         <h1>小Q UI</h1>
         <h2 class="description">一个简单的 UI 框架</h2>
         <p class="actions">
+          <a href="https://gitee.com/gengzhii/qui">Gitee</a>
           <a href="https://github.com/Straight-GZ/q-ui">Github</a>
+
           <router-link to="/doc">开始</router-link>
         </p>
       </div>
