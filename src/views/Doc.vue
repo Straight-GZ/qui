@@ -24,7 +24,6 @@
 <script lang="ts">
 import Topnav from "../components/Topnav.vue";
 import { Ref, inject } from "vue";
-import { router } from "./touter.ts";
 export default {
   components: { Topnav },
   setup() {
@@ -65,7 +64,8 @@ $aside-index: 10;
   }
 }
 aside {
-  background: lightblue;
+  box-shadow: 0 0 10px -5px black ;
+  background: white;
   width: 220px;
   padding: 16px 0;
   position: fixed;

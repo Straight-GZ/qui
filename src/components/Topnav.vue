@@ -8,6 +8,8 @@
     <ul class="menu">
       <li>
         <router-link to="/doc">文档</router-link>
+        <a href="https://github.com/Straight-GZ">Github</a>
+        <a href="https://gitee.com/gengzhii/gengzhii">博客</a>
       </li>
     </ul>
     <!-- <span class="toggleAside" @click="toggleMenu"></span> -->
@@ -37,6 +39,8 @@ export default {
 <style lang="scss" scoped>
 $white: #f1f1f8;
 .topnav {
+  background: white;
+  box-shadow:0 0 10px -5px black ;
   color: $white;
   display: flex;
   padding: 16px;
@@ -64,7 +68,8 @@ $white: #f1f1f8;
     li {
       margin: 0 1em;
       > a {
-        color: $white;
+        color: black;
+        padding: 10px;
       }
     }
   }

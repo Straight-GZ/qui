@@ -1,3 +1,5 @@
+git push -u origin master &&
+git push -u origin3 master &&
 rm -rf dist &&
 yarn build &&
 cd dist &&

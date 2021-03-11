@@ -5,7 +5,7 @@
       <component :is="component" />
     </div>
     <div class="demo-actions">
-      <Button @click="hideCode" level="main" v-if="codeVisible"
+      <Button @click="hideCode" level="danger" v-if="codeVisible"
         >隐藏代码</Button
       >
       <Button @click="showCode" level="main" v-else>查看代码</Button>
